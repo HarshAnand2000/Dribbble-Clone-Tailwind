@@ -61,12 +61,23 @@
         #animation-stop:hover #animation-stop2 {
             animation-play-state: paused;
         }
+
+
+
+        .went-to-left {
+            transform: translateX(-100%);
+        }
+
+        .menu {
+            transform: translateX(-100%);
+        }
     </style>
 </head>
 
 <body>
     <div class="bg-[#F8F7F4] relative" id="main">
-        <div id="nav" class=" w-full h-24 flex lg:justify-between items-center px-6 lg:px-12 py-8 font-semibold">
+        <div id="nav"
+            class=" w-full h-24 flex justify-between lg:justify-between items-center px-6 lg:px-12 py-8 font-semibold">
 
             <div class="items-center  gap-8 hidden lg:flex xl:flex">
                 <div class=" relative flex group">
@@ -108,12 +119,12 @@
                 <h4>Jobs</h4>
                 <h4>Go Pro</h4>
             </div>
-            <div class="group">
+            <div>
                 <div class="lg:hidden">
-                    <i class="text-2xl ri-menu-2-fill"></i>
+                    <i id="menu" class="text-2xl ri-menu-2-fill"></i>
                 </div>
-                <div
-                    class="absolute top-24 transform -translate-x-full group-hover:translate-x-0  transition-all duration-500 left-0 lg:hidden h-[calc(100vh-96px)] w-full bg-[#F8F7F4] py-10 px-8 flex flex-col gap-4">
+                <div id="overlay"
+                    class="absolute top-24  transition-all duration-500 left-0 lg:hidden h-[calc(100vh-96px)] w-full bg-[#F8F7F4] py-10 px-8 flex flex-col gap-4">
                     <h6 class="text-[15px] font-semibold">Find designers</h6>
                     <div class="px-6 border-l border-gray-500 flex flex-col gap-4">
                         <div>
@@ -160,7 +171,7 @@
                         fill="currentColor"></path>
                 </svg>
             </div>
-            <div class="lg:hidden"><i class="font-base ml-12 mr-4 text-xl ri-search-line"></i></div>
+            <div class="lg:hidden"><i class="font-base text-xl ri-search-line"></i></div>
             <div class="flex gap-6 items-center">
                 <div class="hidden lg:block">
                     <form class="flex items-center" action="">
@@ -1304,8 +1315,8 @@
             </div>
         </div>
 
-        <div class="flex justify-center lg:mt-10 mb-32 "><button
-                class="px-[1.25rem] lg:px-6 py-[1rem] lg:py-4 border-[1px] border-black rounded-full text-sm lg:text-base font-semibold lg:font-medium hover:opacity-50">Browse
+        <div class="flex justify-center lg:mt-10 mb-32 mt-12"><button
+                class="px-[1.25rem] lg:px-6 py-[1rem]  lg:py-4 border-[1px] border-black rounded-full text-sm lg:text-base font-semibold lg:font-medium hover:opacity-50">Browse
                 more
                 inspiration</button>
         </div>
@@ -1490,6 +1501,24 @@
 
             </div>
         </div>
+        <script>
+            const menu = document.getElementById("menu")
+            const overlay = document.getElementById("overlay")
+            overlay.classList.add("went-to-left")
+            menu.addEventListener("click", () => {
+
+                console.log("in");
+                if (overlay.classList.contains("went-to-left")) {
+                    overlay.classList.remove("went-to-left")
+                    console.log("done");
+                }
+                else {
+                    overlay.classList.add("went-to-left")
+                }
+
+            })
+
+        </script>
 </body>
 
 </html>
